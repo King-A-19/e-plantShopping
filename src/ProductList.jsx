@@ -1,7 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import './ProductList.css'
+import { useDispatch, useSelector } from 'react-redux';
+import { addItem } from './CreatSlice'; 
+import './ProductList.css';
 function ProductList() {
     const [addedToCart, setAddedToCart] = useState({});
+
+    const dispatch = useDispatch();
+    const cartItems = useSelector(state => state.cart.items);
+
+    const handleAddToCart = (product) => {
+        dispatch(addItem(product));
+        setAddedToCart((prevState) => ({
+            ...prevState,
+            [product.name]: true, // Set the product name as key and value as true to indicate it's added to cart
+        }));
+    };
 
     const plantsArray = [
         {
@@ -243,7 +256,6 @@ function ProductList() {
                             </div>
                         </a>
                     </div>
-
                 </div>
                 <div style={styleObjUl}>
                     <div> <a href="#" style={styleA}>Plants</a></div>
@@ -262,16 +274,15 @@ function ProductList() {
                                     <div className="product-title">{plant.name}</div>
                                     <div className="product-description">{plant.description}</div>
                                     <div className="product-cost">{plant.cost}</div>
-                                    <button onClick={() => handleAddToCart(plant)}>Add to Cart</button>
+                                    <button onClick={() => handleAddToCart(plant)}>
+                                        {addedToCart[plant.name] ? 'Added to Cart' : 'Add to Cart'}
+                                    </button>
                                 </div>
                             ))}
                         </div>
                     </div>
                 ))}
-
-
             </div>
-
         </div>
     );
 }
