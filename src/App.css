@@ -1,0 +1,138 @@
+
+/* App.css */
+
+/* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  width: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Landing page */
+.landing-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #183b2b;
+}
+
+.background-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  min-height: 100%;
+  background-color: #183b2b;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 40px 24px;
+  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.35);
+  gap: 30px;
+}
+
+.landing_content {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 480px);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+.content h1 {
+  color: white;
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.2;
+}
+
+.content p {
+  color: white;
+  font-size: clamp(15px, 2vw, 20px);
+}
+
+.divider {
+  width: 50px;
+  height: 2px;
+  background-color: #8da58b;
+  margin: 8px 0;
+}
+
+.get-started-button {
+  padding: 12px 24px;
+  font-size: 15px;
+  border: none;
+  border-radius: 6px;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.get-started-button:hover {
+  background-color: #45a049;
+}
+
+.aboutus_container {
+  position: relative;
+  z-index: 1;
+  max-width: 420px;
+  width: 100%;
+}
+
+/* Product catalogue transition */
+.product-list-container {
+  position: absolute;
+  top: 100vh;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f8f7f1;
+  transition: top 0.5s ease;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 2;
+  display: none;
+}
+
+.product-list-container.visible {
+  display: block;
+  top: 0;
+}
+
+/* Responsive layout */
+@media screen and (max-width: 768px) {
+  .content {
+    flex-direction: column;
+    padding: 35px 20px;
+  }
+
+  .landing_content {
+    width: 100%;
+  }
+
+  .aboutus_container {
+    max-width: 100%;
+  }
+}
